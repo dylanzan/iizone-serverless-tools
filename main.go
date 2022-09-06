@@ -13,7 +13,10 @@ func main() {
 
 	var iizoneTools *function.IIZoneTools
 
+	// API地址
 	router.GET("/ping", iizoneTools.PingHandler)
-	router.POST("/api/iizone-tools/base64", iizoneTools.IIZoneToolsBase64Decode)
+	router.POST("/api/iizone-tools/base64-decode", iizoneTools.IIZoneToolsBase64Decode)
+	router.POST("/api/iizone-tools/base64-encode", iizoneTools.IIZoneToolsBase64Encode)
+
 	http.ListenAndServe(":9000", router)
 }
