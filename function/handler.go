@@ -16,7 +16,7 @@ type IIZoneTools struct {
 }
 
 // PingHandler 接口连通性测试
-func (IIZoneTools) PingHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+func (i *IIZoneTools) PingHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	fmt.Fprintf(w, "pong")
 }
 
@@ -54,5 +54,18 @@ func (i *IIZoneTools) IIZoneToolsBase64Decode(w http.ResponseWriter, r *http.Req
 
 // IIZoneToolsBase64Encode 编码
 func (i *IIZoneTools) IIZoneToolsBase64Encode(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	var reqBody model.RequestBody
+	if reqBodyBytes, err := io.ReadAll(r.Body); err != nil {
+		model.ResponseHandler(w, codex.ServiceInsideError, err)
+		return
+	} else {
+		err = json.Unmarshal(reqBodyBytes, &reqBody)
+		if err != nil {
+			model.ResponseHandler(w, codex.ServiceInsideError, err)
+			return
+		}
+	}
 
+	res := base64.StdEncoding.EncodeToString([]byte(reqBody.Data))
+	model.ResponseHandler(w, codex.Success, res)
 }
