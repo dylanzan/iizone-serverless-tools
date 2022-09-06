@@ -15,8 +15,8 @@ func main() {
 
 	// API地址
 	router.GET("/ping", iizoneTools.PingHandler)
-	router.POST("/api/iizone-tools/base64-decode", iizoneTools.IIZoneToolsBase64Decode)
-	router.POST("/api/iizone-tools/base64-encode", iizoneTools.IIZoneToolsBase64Encode)
+	router.POST("", iizoneTools.IIZoneToolsBase64Decode)
+	router.POST("/api/iizone-tool/api/iizone-tools/base64-decodes/base64-encode", iizoneTools.IIZoneToolsBase64Encode)
 
 	http.ListenAndServe(":9000", router)
 }
