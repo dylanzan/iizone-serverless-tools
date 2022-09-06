@@ -9,7 +9,13 @@ Please run `env GOOS=linux go build .` for builiding linux runable binary.
 And you should make sure the binary has execute permission `chmod +x main`.
 
 # 交叉编译
-```shell
 
-GOARCH=amd64 GOOS=linux go build -ldflags "-s -w"
+```shell
+  GOARCH=amd64 GOOS=linux go build -ldflags "-s -w"
+```
+
+# 安装FUN脚手架
+
+```shell
+  sudo npm install @alicloud/fun -g
 ```
