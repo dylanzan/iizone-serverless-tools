@@ -1,4 +1,4 @@
-package model
+package requestx
 
 // RequestBody 请求body
 type RequestBody struct {

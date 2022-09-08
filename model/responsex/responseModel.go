@@ -1,4 +1,4 @@
-package model
+package responsex
 
 import (
 	"encoding/json"
